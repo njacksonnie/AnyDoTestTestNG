@@ -11,8 +11,8 @@ import java.io.IOException;
 public class Login_Page extends base
 {
 	public WebDriver driver;
-	public LoginPage lp;
-	public HomePage hp;
+	public LoginPage lp1;
+	public HomePage hp1;
 
 	@BeforeTest
 	public void launchBrowser() throws IOException{
@@ -26,22 +26,29 @@ public class Login_Page extends base
 	@Test
 	public void login()
 	{
-		lp = new LoginPage(driver);
-		lp.login().click();
-		lp.loginWithEmail().click();
-		lp.email().sendKeys(prop.getProperty("email"));
-		lp.next().click();
-		lp.password().sendKeys(prop.getProperty("password"));
-		lp.submit().click();
+		lp1 = new LoginPage(driver);
+		lp1.login().click();
+		lp1.loginWithEmail().click();
+		lp1.email().sendKeys(prop.getProperty("email"));
+		lp1.next().click();
+		lp1.password().sendKeys(prop.getProperty("password"));
+		lp1.submit().click();
 	}
 	
 	@Test(dependsOnMethods= {"login"})
 	public void CreateTask()
 	{
-		hp = new HomePage(driver);
-		hp.createTask().click();
-		hp.taskName().sendKeys("Assigned to user");
-		hp.submitTask().click();
+		hp1 = new HomePage(driver);
+		hp1.createTask().click();
+		hp1.taskName().sendKeys("Assigned to user");
+		hp1.submitTask().click();
+	}
+
+	@Test(dependsOnMethods = {"CreateTask"})
+	public void LogOut(){
+		hp1.clickSettings().click();
+		hp1.clickMyProfile().click();
+		hp1.clickSignOut().click();
 	}
 	
 	@AfterTest

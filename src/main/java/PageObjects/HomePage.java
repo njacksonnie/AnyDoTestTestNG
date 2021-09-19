@@ -27,4 +27,15 @@ public class HomePage {
         return driver.findElement(submitTask);
     }
 
+    public WebElement clickSettings() {
+        return driver.findElement(By.xpath("//button[@aria-label='Settings']"));
+    }
+
+    public WebElement clickMyProfile() {
+        return driver.findElement(By.xpath("//div[normalize-space()='My Profile']"));
+    }
+
+    public WebElement clickSignOut() {
+        return driver.findElement(By.xpath("//div[normalize-space()='Sign Out']"));
+    }
 }
