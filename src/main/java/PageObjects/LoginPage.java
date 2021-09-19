@@ -20,7 +20,7 @@ public class LoginPage {
     private By submit = By.xpath("//button[@type='submit']");
 
     public WebElement login() {
-        return driver.findElement(By.xpath("//button[contains(@type,'submit')]"));
+        return driver.findElement(By.xpath("//a[contains(@class,'-secondary')]"));
     }
 
     public WebElement submit() {

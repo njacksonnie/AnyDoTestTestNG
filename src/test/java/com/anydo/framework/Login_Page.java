@@ -57,5 +57,4 @@ public class Login_Page extends base
 		driver.close();
 		driver.quit();
 	}
-
 }

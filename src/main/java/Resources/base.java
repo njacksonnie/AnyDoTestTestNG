@@ -10,38 +10,31 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class base 
-{
-	public WebDriver driver;
-	public Properties prop;
-	public WebDriver initializeDriver() throws IOException
-	{
-	prop = new Properties();
-	FileInputStream fis = new FileInputStream(System.getProperty("user.dir")+"/src/main/java/Resources/data.properties");
-	prop.load(fis);
+public class base {
+    public WebDriver driver;
+    public Properties prop;
 
-	String browserName = prop.getProperty("browser");
+    public WebDriver initializeDriver() throws IOException {
+        prop = new Properties();
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/Resources/data.properties");
+        prop.load(fis);
 
-	if(browserName.contains("chrome"))
-	{
-		System.setProperty("webdriver.chrome.driver", "/Users/niloymazumder/Documents/IdeaProjects/WebDriver/chromedriver");
+        String browserName = prop.getProperty("browser");
 
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--incognito");
+        if (browserName.contains("chrome")) {
+            System.setProperty("webdriver.chrome.driver", "/Users/niloymazumder/Documents/IdeaProjects/WebDriver/chromedriver");
 
-		driver = new ChromeDriver(options);
-	}
-	else if(browserName.contains("safari"))
-	{
-		driver = new SafariDriver();
-	}
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--incognito");
 
-	driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	
-	return driver;
-	}
-	
-	
+            driver = new ChromeDriver(options);
+        } else if (browserName.contains("safari")) {
+            driver = new SafariDriver();
+        }
 
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        return driver;
+    }
 }
