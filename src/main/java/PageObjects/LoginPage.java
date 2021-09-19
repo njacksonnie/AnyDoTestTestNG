@@ -14,13 +14,13 @@ public class LoginPage {
 
 
     private By loginWithEmail = By.xpath(("//div[contains(text(),'Continue with Email or Apple')]"));
-    private By email = By.xpath("//input[@placeholder='your@email.com']");
-    private By next = By.xpath("//button[@type='submit']//*[name()='svg']//*[name()='path' and contains(@fill,'currentCol')]");
-    private By password = By.xpath("//input[@name='password']");
+    private By email = By.xpath("//input[contains(@placeholder,'your@email.com')]");
+    private By next = By.xpath("//button[contains(@type,'submit')]");
+    private By password = By.xpath("//input[@placeholder='Password']");
     private By submit = By.xpath("//button[@type='submit']");
 
     public WebElement login() {
-        return driver.findElement(By.xpath("//a[normalize-space()='Login']"));
+        return driver.findElement(By.xpath("//button[contains(@type,'submit')]"));
     }
 
     public WebElement submit() {
